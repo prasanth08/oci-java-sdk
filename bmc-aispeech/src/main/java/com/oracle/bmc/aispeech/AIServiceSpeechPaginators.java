@@ -52,48 +52,19 @@ public class AIServiceSpeechPaginators {
      */
     public Iterable<ListTranscriptionJobsResponse> listTranscriptionJobsResponseIterator(
             final ListTranscriptionJobsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListTranscriptionJobsRequest.Builder,
-                ListTranscriptionJobsRequest,
-                ListTranscriptionJobsResponse>(
-                new java.util.function.Supplier<ListTranscriptionJobsRequest.Builder>() {
-                    @Override
-                    public ListTranscriptionJobsRequest.Builder get() {
-                        return ListTranscriptionJobsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListTranscriptionJobsRequest.builder().copy(request),
+                ListTranscriptionJobsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListTranscriptionJobsResponse, String>() {
-                    @Override
-                    public String apply(ListTranscriptionJobsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListTranscriptionJobsRequest.Builder>,
-                        ListTranscriptionJobsRequest>() {
-                    @Override
-                    public ListTranscriptionJobsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListTranscriptionJobsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionJobsRequest, ListTranscriptionJobsResponse>() {
-                    @Override
-                    public ListTranscriptionJobsResponse apply(
-                            ListTranscriptionJobsRequest request) {
-                        return client.listTranscriptionJobs(request);
-                    }
-                });
+                client::listTranscriptionJobs);
     }
 
     /**
@@ -109,58 +80,20 @@ public class AIServiceSpeechPaginators {
      */
     public Iterable<com.oracle.bmc.aispeech.model.TranscriptionJobSummary>
             listTranscriptionJobsRecordIterator(final ListTranscriptionJobsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListTranscriptionJobsRequest.Builder,
-                ListTranscriptionJobsRequest,
-                ListTranscriptionJobsResponse,
-                com.oracle.bmc.aispeech.model.TranscriptionJobSummary>(
-                new java.util.function.Supplier<ListTranscriptionJobsRequest.Builder>() {
-                    @Override
-                    public ListTranscriptionJobsRequest.Builder get() {
-                        return ListTranscriptionJobsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListTranscriptionJobsRequest.builder().copy(request),
+                ListTranscriptionJobsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListTranscriptionJobsResponse, String>() {
-                    @Override
-                    public String apply(ListTranscriptionJobsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListTranscriptionJobsRequest.Builder>,
-                        ListTranscriptionJobsRequest>() {
-                    @Override
-                    public ListTranscriptionJobsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListTranscriptionJobsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionJobsRequest, ListTranscriptionJobsResponse>() {
-                    @Override
-                    public ListTranscriptionJobsResponse apply(
-                            ListTranscriptionJobsRequest request) {
-                        return client.listTranscriptionJobs(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionJobsResponse,
-                        java.util.List<com.oracle.bmc.aispeech.model.TranscriptionJobSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.aispeech.model.TranscriptionJobSummary>
-                            apply(ListTranscriptionJobsResponse response) {
-                        return response.getTranscriptionJobCollection().getItems();
-                    }
-                });
+                client::listTranscriptionJobs,
+                response -> response.getTranscriptionJobCollection().getItems());
     }
 
     /**
@@ -174,48 +107,19 @@ public class AIServiceSpeechPaginators {
      */
     public Iterable<ListTranscriptionTasksResponse> listTranscriptionTasksResponseIterator(
             final ListTranscriptionTasksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListTranscriptionTasksRequest.Builder,
-                ListTranscriptionTasksRequest,
-                ListTranscriptionTasksResponse>(
-                new java.util.function.Supplier<ListTranscriptionTasksRequest.Builder>() {
-                    @Override
-                    public ListTranscriptionTasksRequest.Builder get() {
-                        return ListTranscriptionTasksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListTranscriptionTasksRequest.builder().copy(request),
+                ListTranscriptionTasksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListTranscriptionTasksResponse, String>() {
-                    @Override
-                    public String apply(ListTranscriptionTasksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListTranscriptionTasksRequest.Builder>,
-                        ListTranscriptionTasksRequest>() {
-                    @Override
-                    public ListTranscriptionTasksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListTranscriptionTasksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionTasksRequest, ListTranscriptionTasksResponse>() {
-                    @Override
-                    public ListTranscriptionTasksResponse apply(
-                            ListTranscriptionTasksRequest request) {
-                        return client.listTranscriptionTasks(request);
-                    }
-                });
+                request1 -> client.listTranscriptionTasks(request1));
     }
 
     /**
@@ -231,57 +135,19 @@ public class AIServiceSpeechPaginators {
      */
     public Iterable<com.oracle.bmc.aispeech.model.TranscriptionTaskSummary>
             listTranscriptionTasksRecordIterator(final ListTranscriptionTasksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListTranscriptionTasksRequest.Builder,
-                ListTranscriptionTasksRequest,
-                ListTranscriptionTasksResponse,
-                com.oracle.bmc.aispeech.model.TranscriptionTaskSummary>(
-                new java.util.function.Supplier<ListTranscriptionTasksRequest.Builder>() {
-                    @Override
-                    public ListTranscriptionTasksRequest.Builder get() {
-                        return ListTranscriptionTasksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListTranscriptionTasksRequest.builder().copy(request),
+                ListTranscriptionTasksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListTranscriptionTasksResponse, String>() {
-                    @Override
-                    public String apply(ListTranscriptionTasksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListTranscriptionTasksRequest.Builder>,
-                        ListTranscriptionTasksRequest>() {
-                    @Override
-                    public ListTranscriptionTasksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListTranscriptionTasksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionTasksRequest, ListTranscriptionTasksResponse>() {
-                    @Override
-                    public ListTranscriptionTasksResponse apply(
-                            ListTranscriptionTasksRequest request) {
-                        return client.listTranscriptionTasks(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListTranscriptionTasksResponse,
-                        java.util.List<com.oracle.bmc.aispeech.model.TranscriptionTaskSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.aispeech.model.TranscriptionTaskSummary>
-                            apply(ListTranscriptionTasksResponse response) {
-                        return response.getTranscriptionTaskCollection().getItems();
-                    }
-                });
+                client::listTranscriptionTasks,
+                response -> response.getTranscriptionTaskCollection().getItems());
     }
 }

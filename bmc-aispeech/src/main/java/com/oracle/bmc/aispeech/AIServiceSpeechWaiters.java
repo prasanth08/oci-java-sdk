@@ -111,21 +111,9 @@ public class AIServiceSpeechWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetTranscriptionJobRequest, GetTranscriptionJobResponse>() {
-                            @Override
-                            public GetTranscriptionJobResponse apply(
-                                    GetTranscriptionJobRequest request) {
-                                return client.getTranscriptionJob(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetTranscriptionJobResponse>() {
-                            @Override
-                            public boolean test(GetTranscriptionJobResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getTranscriptionJob().getLifecycleState());
-                            }
-                        },
+                        client::getTranscriptionJob,
+                        response -> targetStatesSet.contains(
+                                response.getTranscriptionJob().getLifecycleState()),
                         false),
                 request);
     }
@@ -218,21 +206,9 @@ public class AIServiceSpeechWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetTranscriptionTaskRequest, GetTranscriptionTaskResponse>() {
-                            @Override
-                            public GetTranscriptionTaskResponse apply(
-                                    GetTranscriptionTaskRequest request) {
-                                return client.getTranscriptionTask(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetTranscriptionTaskResponse>() {
-                            @Override
-                            public boolean test(GetTranscriptionTaskResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getTranscriptionTask().getLifecycleState());
-                            }
-                        },
+                        client::getTranscriptionTask,
+                        response -> targetStatesSet.contains(
+                                response.getTranscriptionTask().getLifecycleState()),
                         false),
                 request);
     }
