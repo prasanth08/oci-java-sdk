@@ -116,21 +116,9 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetAiPrivateEndpointRequest, GetAiPrivateEndpointResponse>() {
-                            @Override
-                            public GetAiPrivateEndpointResponse apply(
-                                    GetAiPrivateEndpointRequest request) {
-                                return client.getAiPrivateEndpoint(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetAiPrivateEndpointResponse>() {
-                            @Override
-                            public boolean test(GetAiPrivateEndpointResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getAiPrivateEndpoint().getLifecycleState());
-                            }
-                        },
+                        client::getAiPrivateEndpoint,
+                        response -> targetStatesSet.contains(
+                                response.getAiPrivateEndpoint().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.aianomalydetection.model.AiPrivateEndpoint
                                         .LifecycleState.Deleted)),
@@ -219,20 +207,9 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetDataAssetRequest, GetDataAssetResponse>() {
-                            @Override
-                            public GetDataAssetResponse apply(GetDataAssetRequest request) {
-                                return client.getDataAsset(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetDataAssetResponse>() {
-                            @Override
-                            public boolean test(GetDataAssetResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getDataAsset().getLifecycleState());
-                            }
-                        },
+                        client::getDataAsset,
+                        response -> targetStatesSet.contains(
+                                response.getDataAsset().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.aianomalydetection.model.DataAsset.LifecycleState
                                         .Deleted)),
@@ -328,21 +305,9 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetDetectAnomalyJobRequest, GetDetectAnomalyJobResponse>() {
-                            @Override
-                            public GetDetectAnomalyJobResponse apply(
-                                    GetDetectAnomalyJobRequest request) {
-                                return client.getDetectAnomalyJob(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetDetectAnomalyJobResponse>() {
-                            @Override
-                            public boolean test(GetDetectAnomalyJobResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getDetectAnomalyJob().getLifecycleState());
-                            }
-                        },
+                        client::getDetectAnomalyJob,
+                        response -> targetStatesSet.contains(
+                                response.getDetectAnomalyJob().getLifecycleState()),
                         false),
                 request);
     }
@@ -428,19 +393,9 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetModelRequest, GetModelResponse>() {
-                            @Override
-                            public GetModelResponse apply(GetModelRequest request) {
-                                return client.getModel(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetModelResponse>() {
-                            @Override
-                            public boolean test(GetModelResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getModel().getLifecycleState());
-                            }
-                        },
+                        client::getModel,
+                        response -> targetStatesSet.contains(
+                                response.getModel().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.aianomalydetection.model.Model.LifecycleState
                                         .Deleted)),
@@ -528,19 +483,9 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetProjectRequest, GetProjectResponse>() {
-                            @Override
-                            public GetProjectResponse apply(GetProjectRequest request) {
-                                return client.getProject(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetProjectResponse>() {
-                            @Override
-                            public boolean test(GetProjectResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getProject().getLifecycleState());
-                            }
-                        },
+                        request1 -> client.getProject(request1),
+                        response -> targetStatesSet.contains(
+                                response.getProject().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.aianomalydetection.model.Project.LifecycleState
                                         .Deleted)),
@@ -585,19 +530,10 @@ public class AnomalyDetectionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);
