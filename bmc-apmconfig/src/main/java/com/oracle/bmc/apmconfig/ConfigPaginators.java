@@ -51,44 +51,19 @@ public class ConfigPaginators {
      */
     public Iterable<ListConfigsResponse> listConfigsResponseIterator(
             final ListConfigsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListConfigsRequest.Builder, ListConfigsRequest, ListConfigsResponse>(
-                new java.util.function.Supplier<ListConfigsRequest.Builder>() {
-                    @Override
-                    public ListConfigsRequest.Builder get() {
-                        return ListConfigsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListConfigsRequest.builder().copy(request),
+                ListConfigsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListConfigsResponse, String>() {
-                    @Override
-                    public String apply(ListConfigsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListConfigsRequest.Builder>,
-                        ListConfigsRequest>() {
-                    @Override
-                    public ListConfigsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListConfigsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListConfigsRequest, ListConfigsResponse>() {
-                    @Override
-                    public ListConfigsResponse apply(ListConfigsRequest request) {
-                        return client.listConfigs(request);
-                    }
-                });
+                client::listConfigs);
     }
 
     /**
@@ -103,55 +78,19 @@ public class ConfigPaginators {
      */
     public Iterable<com.oracle.bmc.apmconfig.model.ConfigSummary> listConfigsRecordIterator(
             final ListConfigsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListConfigsRequest.Builder,
-                ListConfigsRequest,
-                ListConfigsResponse,
-                com.oracle.bmc.apmconfig.model.ConfigSummary>(
-                new java.util.function.Supplier<ListConfigsRequest.Builder>() {
-                    @Override
-                    public ListConfigsRequest.Builder get() {
-                        return ListConfigsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListConfigsRequest.builder().copy(request),
+                ListConfigsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListConfigsResponse, String>() {
-                    @Override
-                    public String apply(ListConfigsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListConfigsRequest.Builder>,
-                        ListConfigsRequest>() {
-                    @Override
-                    public ListConfigsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListConfigsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListConfigsRequest, ListConfigsResponse>() {
-                    @Override
-                    public ListConfigsResponse apply(ListConfigsRequest request) {
-                        return client.listConfigs(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListConfigsResponse,
-                        java.util.List<com.oracle.bmc.apmconfig.model.ConfigSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apmconfig.model.ConfigSummary> apply(
-                            ListConfigsResponse response) {
-                        return response.getConfigCollection().getItems();
-                    }
-                });
+                client::listConfigs,
+                response -> response.getConfigCollection().getItems());
     }
 }
