@@ -52,48 +52,19 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<ListMonitoredInstancesResponse> listMonitoredInstancesResponseIterator(
             final ListMonitoredInstancesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListMonitoredInstancesRequest.Builder,
-                ListMonitoredInstancesRequest,
-                ListMonitoredInstancesResponse>(
-                new java.util.function.Supplier<ListMonitoredInstancesRequest.Builder>() {
-                    @Override
-                    public ListMonitoredInstancesRequest.Builder get() {
-                        return ListMonitoredInstancesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListMonitoredInstancesRequest.builder().copy(request),
+                ListMonitoredInstancesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListMonitoredInstancesResponse, String>() {
-                    @Override
-                    public String apply(ListMonitoredInstancesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListMonitoredInstancesRequest.Builder>,
-                        ListMonitoredInstancesRequest>() {
-                    @Override
-                    public ListMonitoredInstancesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListMonitoredInstancesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListMonitoredInstancesRequest, ListMonitoredInstancesResponse>() {
-                    @Override
-                    public ListMonitoredInstancesResponse apply(
-                            ListMonitoredInstancesRequest request) {
-                        return client.listMonitoredInstances(request);
-                    }
-                });
+                client::listMonitoredInstances);
     }
 
     /**
@@ -109,60 +80,20 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<com.oracle.bmc.appmgmtcontrol.model.MonitoredInstanceSummary>
             listMonitoredInstancesRecordIterator(final ListMonitoredInstancesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListMonitoredInstancesRequest.Builder,
-                ListMonitoredInstancesRequest,
-                ListMonitoredInstancesResponse,
-                com.oracle.bmc.appmgmtcontrol.model.MonitoredInstanceSummary>(
-                new java.util.function.Supplier<ListMonitoredInstancesRequest.Builder>() {
-                    @Override
-                    public ListMonitoredInstancesRequest.Builder get() {
-                        return ListMonitoredInstancesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListMonitoredInstancesRequest.builder().copy(request),
+                ListMonitoredInstancesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListMonitoredInstancesResponse, String>() {
-                    @Override
-                    public String apply(ListMonitoredInstancesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListMonitoredInstancesRequest.Builder>,
-                        ListMonitoredInstancesRequest>() {
-                    @Override
-                    public ListMonitoredInstancesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListMonitoredInstancesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListMonitoredInstancesRequest, ListMonitoredInstancesResponse>() {
-                    @Override
-                    public ListMonitoredInstancesResponse apply(
-                            ListMonitoredInstancesRequest request) {
-                        return client.listMonitoredInstances(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListMonitoredInstancesResponse,
-                        java.util.List<
-                                com.oracle.bmc.appmgmtcontrol.model.MonitoredInstanceSummary>>() {
-                    @Override
-                    public java.util.List<
-                                    com.oracle.bmc.appmgmtcontrol.model.MonitoredInstanceSummary>
-                            apply(ListMonitoredInstancesResponse response) {
-                        return response.getMonitoredInstanceCollection().getItems();
-                    }
-                });
+                client::listMonitoredInstances,
+                response -> response.getMonitoredInstanceCollection().getItems());
     }
 
     /**
@@ -176,48 +107,19 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<ListWorkRequestErrorsResponse> listWorkRequestErrorsResponseIterator(
             final ListWorkRequestErrorsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestErrorsRequest.Builder,
-                ListWorkRequestErrorsRequest,
-                ListWorkRequestErrorsResponse>(
-                new java.util.function.Supplier<ListWorkRequestErrorsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest.Builder get() {
-                        return ListWorkRequestErrorsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestErrorsRequest.builder().copy(request),
+                ListWorkRequestErrorsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestErrorsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestErrorsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestErrorsRequest.Builder>,
-                        ListWorkRequestErrorsRequest>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestErrorsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsRequest, ListWorkRequestErrorsResponse>() {
-                    @Override
-                    public ListWorkRequestErrorsResponse apply(
-                            ListWorkRequestErrorsRequest request) {
-                        return client.listWorkRequestErrors(request);
-                    }
-                });
+                client::listWorkRequestErrors);
     }
 
     /**
@@ -233,58 +135,20 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<com.oracle.bmc.appmgmtcontrol.model.WorkRequestError>
             listWorkRequestErrorsRecordIterator(final ListWorkRequestErrorsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestErrorsRequest.Builder,
-                ListWorkRequestErrorsRequest,
-                ListWorkRequestErrorsResponse,
-                com.oracle.bmc.appmgmtcontrol.model.WorkRequestError>(
-                new java.util.function.Supplier<ListWorkRequestErrorsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest.Builder get() {
-                        return ListWorkRequestErrorsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestErrorsRequest.builder().copy(request),
+                ListWorkRequestErrorsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestErrorsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestErrorsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestErrorsRequest.Builder>,
-                        ListWorkRequestErrorsRequest>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestErrorsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsRequest, ListWorkRequestErrorsResponse>() {
-                    @Override
-                    public ListWorkRequestErrorsResponse apply(
-                            ListWorkRequestErrorsRequest request) {
-                        return client.listWorkRequestErrors(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsResponse,
-                        java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestError>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestError>
-                            apply(ListWorkRequestErrorsResponse response) {
-                        return response.getWorkRequestErrorCollection().getItems();
-                    }
-                });
+                client::listWorkRequestErrors,
+                response -> response.getWorkRequestErrorCollection().getItems());
     }
 
     /**
@@ -297,47 +161,19 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<ListWorkRequestLogsResponse> listWorkRequestLogsResponseIterator(
             final ListWorkRequestLogsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestLogsRequest.Builder,
-                ListWorkRequestLogsRequest,
-                ListWorkRequestLogsResponse>(
-                new java.util.function.Supplier<ListWorkRequestLogsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestLogsRequest.Builder get() {
-                        return ListWorkRequestLogsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestLogsRequest.builder().copy(request),
+                ListWorkRequestLogsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestLogsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestLogsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestLogsRequest.Builder>,
-                        ListWorkRequestLogsRequest>() {
-                    @Override
-                    public ListWorkRequestLogsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestLogsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsRequest, ListWorkRequestLogsResponse>() {
-                    @Override
-                    public ListWorkRequestLogsResponse apply(ListWorkRequestLogsRequest request) {
-                        return client.listWorkRequestLogs(request);
-                    }
-                });
+                client::listWorkRequestLogs);
     }
 
     /**
@@ -353,57 +189,20 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<com.oracle.bmc.appmgmtcontrol.model.WorkRequestLogEntry>
             listWorkRequestLogsRecordIterator(final ListWorkRequestLogsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestLogsRequest.Builder,
-                ListWorkRequestLogsRequest,
-                ListWorkRequestLogsResponse,
-                com.oracle.bmc.appmgmtcontrol.model.WorkRequestLogEntry>(
-                new java.util.function.Supplier<ListWorkRequestLogsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestLogsRequest.Builder get() {
-                        return ListWorkRequestLogsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestLogsRequest.builder().copy(request),
+                ListWorkRequestLogsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestLogsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestLogsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestLogsRequest.Builder>,
-                        ListWorkRequestLogsRequest>() {
-                    @Override
-                    public ListWorkRequestLogsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestLogsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsRequest, ListWorkRequestLogsResponse>() {
-                    @Override
-                    public ListWorkRequestLogsResponse apply(ListWorkRequestLogsRequest request) {
-                        return client.listWorkRequestLogs(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsResponse,
-                        java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestLogEntry>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestLogEntry>
-                            apply(ListWorkRequestLogsResponse response) {
-                        return response.getWorkRequestLogEntryCollection().getItems();
-                    }
-                });
+                client::listWorkRequestLogs,
+                response -> response.getWorkRequestLogEntryCollection().getItems());
     }
 
     /**
@@ -416,45 +215,19 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<ListWorkRequestsResponse> listWorkRequestsResponseIterator(
             final ListWorkRequestsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestsRequest.Builder, ListWorkRequestsRequest, ListWorkRequestsResponse>(
-                new java.util.function.Supplier<ListWorkRequestsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestsRequest.Builder get() {
-                        return ListWorkRequestsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestsRequest.builder().copy(request),
+                ListWorkRequestsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestsRequest.Builder>,
-                        ListWorkRequestsRequest>() {
-                    @Override
-                    public ListWorkRequestsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsRequest, ListWorkRequestsResponse>() {
-                    @Override
-                    public ListWorkRequestsResponse apply(ListWorkRequestsRequest request) {
-                        return client.listWorkRequests(request);
-                    }
-                });
+                client::listWorkRequests);
     }
 
     /**
@@ -469,56 +242,19 @@ public class AppmgmtControlPaginators {
      */
     public Iterable<com.oracle.bmc.appmgmtcontrol.model.WorkRequestSummary>
             listWorkRequestsRecordIterator(final ListWorkRequestsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestsRequest.Builder,
-                ListWorkRequestsRequest,
-                ListWorkRequestsResponse,
-                com.oracle.bmc.appmgmtcontrol.model.WorkRequestSummary>(
-                new java.util.function.Supplier<ListWorkRequestsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestsRequest.Builder get() {
-                        return ListWorkRequestsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestsRequest.builder().copy(request),
+                ListWorkRequestsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestsRequest.Builder>,
-                        ListWorkRequestsRequest>() {
-                    @Override
-                    public ListWorkRequestsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsRequest, ListWorkRequestsResponse>() {
-                    @Override
-                    public ListWorkRequestsResponse apply(ListWorkRequestsRequest request) {
-                        return client.listWorkRequests(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsResponse,
-                        java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.appmgmtcontrol.model.WorkRequestSummary>
-                            apply(ListWorkRequestsResponse response) {
-                        return response.getWorkRequestSummaryCollection().getItems();
-                    }
-                });
+                client::listWorkRequests,
+                response -> response.getWorkRequestSummaryCollection().getItems());
     }
 }
