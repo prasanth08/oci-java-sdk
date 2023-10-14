@@ -106,19 +106,9 @@ public class AIServiceLanguageWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetEndpointRequest, GetEndpointResponse>() {
-                            @Override
-                            public GetEndpointResponse apply(GetEndpointRequest request) {
-                                return client.getEndpoint(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetEndpointResponse>() {
-                            @Override
-                            public boolean test(GetEndpointResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getEndpoint().getLifecycleState());
-                            }
-                        },
+                        client::getEndpoint,
+                        response -> targetStatesSet.contains(
+                                response.getEndpoint().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.ailanguage.model.Endpoint.LifecycleState.Deleted)),
                 request);
@@ -205,19 +195,9 @@ public class AIServiceLanguageWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetModelRequest, GetModelResponse>() {
-                            @Override
-                            public GetModelResponse apply(GetModelRequest request) {
-                                return client.getModel(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetModelResponse>() {
-                            @Override
-                            public boolean test(GetModelResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getModel().getLifecycleState());
-                            }
-                        },
+                        client::getModel,
+                        response -> targetStatesSet.contains(
+                                response.getModel().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.ailanguage.model.Model.LifecycleState.Deleted)),
                 request);
@@ -304,19 +284,9 @@ public class AIServiceLanguageWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetProjectRequest, GetProjectResponse>() {
-                            @Override
-                            public GetProjectResponse apply(GetProjectRequest request) {
-                                return client.getProject(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetProjectResponse>() {
-                            @Override
-                            public boolean test(GetProjectResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getProject().getLifecycleState());
-                            }
-                        },
+                        client::getProject,
+                        response -> targetStatesSet.contains(
+                                response.getProject().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.ailanguage.model.Project.LifecycleState.Deleted)),
                 request);
@@ -360,19 +330,10 @@ public class AIServiceLanguageWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);

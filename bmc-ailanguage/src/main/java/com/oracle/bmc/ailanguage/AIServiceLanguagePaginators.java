@@ -51,44 +51,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListEndpointsResponse> listEndpointsResponseIterator(
             final ListEndpointsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListEndpointsRequest.Builder, ListEndpointsRequest, ListEndpointsResponse>(
-                new java.util.function.Supplier<ListEndpointsRequest.Builder>() {
-                    @Override
-                    public ListEndpointsRequest.Builder get() {
-                        return ListEndpointsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListEndpointsRequest.builder().copy(request),
+                ListEndpointsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEndpointsResponse, String>() {
-                    @Override
-                    public String apply(ListEndpointsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEndpointsRequest.Builder>,
-                        ListEndpointsRequest>() {
-                    @Override
-                    public ListEndpointsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEndpointsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListEndpointsRequest, ListEndpointsResponse>() {
-                    @Override
-                    public ListEndpointsResponse apply(ListEndpointsRequest request) {
-                        return client.listEndpoints(request);
-                    }
-                });
+                client::listEndpoints);
     }
 
     /**
@@ -103,56 +78,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.EndpointSummary> listEndpointsRecordIterator(
             final ListEndpointsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListEndpointsRequest.Builder,
-                ListEndpointsRequest,
-                ListEndpointsResponse,
-                com.oracle.bmc.ailanguage.model.EndpointSummary>(
-                new java.util.function.Supplier<ListEndpointsRequest.Builder>() {
-                    @Override
-                    public ListEndpointsRequest.Builder get() {
-                        return ListEndpointsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListEndpointsRequest.builder().copy(request),
+                ListEndpointsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEndpointsResponse, String>() {
-                    @Override
-                    public String apply(ListEndpointsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEndpointsRequest.Builder>,
-                        ListEndpointsRequest>() {
-                    @Override
-                    public ListEndpointsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEndpointsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListEndpointsRequest, ListEndpointsResponse>() {
-                    @Override
-                    public ListEndpointsResponse apply(ListEndpointsRequest request) {
-                        return client.listEndpoints(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListEndpointsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.EndpointSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.EndpointSummary> apply(
-                            ListEndpointsResponse response) {
-                        return response.getEndpointCollection().getItems();
-                    }
-                });
+                client::listEndpoints,
+                response -> response.getEndpointCollection().getItems());
     }
 
     /**
@@ -166,48 +105,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListEvaluationResultsResponse> listEvaluationResultsResponseIterator(
             final ListEvaluationResultsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListEvaluationResultsRequest.Builder,
-                ListEvaluationResultsRequest,
-                ListEvaluationResultsResponse>(
-                new java.util.function.Supplier<ListEvaluationResultsRequest.Builder>() {
-                    @Override
-                    public ListEvaluationResultsRequest.Builder get() {
-                        return ListEvaluationResultsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListEvaluationResultsRequest.builder().copy(request),
+                ListEvaluationResultsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEvaluationResultsResponse, String>() {
-                    @Override
-                    public String apply(ListEvaluationResultsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEvaluationResultsRequest.Builder>,
-                        ListEvaluationResultsRequest>() {
-                    @Override
-                    public ListEvaluationResultsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEvaluationResultsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListEvaluationResultsRequest, ListEvaluationResultsResponse>() {
-                    @Override
-                    public ListEvaluationResultsResponse apply(
-                            ListEvaluationResultsRequest request) {
-                        return client.listEvaluationResults(request);
-                    }
-                });
+                client::listEvaluationResults);
     }
 
     /**
@@ -223,58 +133,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.EvaluationResultSummary>
             listEvaluationResultsRecordIterator(final ListEvaluationResultsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListEvaluationResultsRequest.Builder,
-                ListEvaluationResultsRequest,
-                ListEvaluationResultsResponse,
-                com.oracle.bmc.ailanguage.model.EvaluationResultSummary>(
-                new java.util.function.Supplier<ListEvaluationResultsRequest.Builder>() {
-                    @Override
-                    public ListEvaluationResultsRequest.Builder get() {
-                        return ListEvaluationResultsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListEvaluationResultsRequest.builder().copy(request),
+                ListEvaluationResultsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEvaluationResultsResponse, String>() {
-                    @Override
-                    public String apply(ListEvaluationResultsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEvaluationResultsRequest.Builder>,
-                        ListEvaluationResultsRequest>() {
-                    @Override
-                    public ListEvaluationResultsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEvaluationResultsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListEvaluationResultsRequest, ListEvaluationResultsResponse>() {
-                    @Override
-                    public ListEvaluationResultsResponse apply(
-                            ListEvaluationResultsRequest request) {
-                        return client.listEvaluationResults(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListEvaluationResultsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.EvaluationResultSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.EvaluationResultSummary>
-                            apply(ListEvaluationResultsResponse response) {
-                        return response.getEvaluationResultCollection().getItems();
-                    }
-                });
+                client::listEvaluationResults,
+                response -> response.getEvaluationResultCollection().getItems());
     }
 
     /**
@@ -287,44 +159,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListModelsResponse> listModelsResponseIterator(
             final ListModelsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListModelsRequest.Builder, ListModelsRequest, ListModelsResponse>(
-                new java.util.function.Supplier<ListModelsRequest.Builder>() {
-                    @Override
-                    public ListModelsRequest.Builder get() {
-                        return ListModelsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListModelsRequest.builder().copy(request),
+                ListModelsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListModelsResponse, String>() {
-                    @Override
-                    public String apply(ListModelsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListModelsRequest.Builder>,
-                        ListModelsRequest>() {
-                    @Override
-                    public ListModelsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListModelsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListModelsRequest, ListModelsResponse>() {
-                    @Override
-                    public ListModelsResponse apply(ListModelsRequest request) {
-                        return client.listModels(request);
-                    }
-                });
+                client::listModels);
     }
 
     /**
@@ -339,56 +186,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.ModelSummary> listModelsRecordIterator(
             final ListModelsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListModelsRequest.Builder,
-                ListModelsRequest,
-                ListModelsResponse,
-                com.oracle.bmc.ailanguage.model.ModelSummary>(
-                new java.util.function.Supplier<ListModelsRequest.Builder>() {
-                    @Override
-                    public ListModelsRequest.Builder get() {
-                        return ListModelsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListModelsRequest.builder().copy(request),
+                ListModelsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListModelsResponse, String>() {
-                    @Override
-                    public String apply(ListModelsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListModelsRequest.Builder>,
-                        ListModelsRequest>() {
-                    @Override
-                    public ListModelsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListModelsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListModelsRequest, ListModelsResponse>() {
-                    @Override
-                    public ListModelsResponse apply(ListModelsRequest request) {
-                        return client.listModels(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListModelsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.ModelSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.ModelSummary> apply(
-                            ListModelsResponse response) {
-                        return response.getModelCollection().getItems();
-                    }
-                });
+                client::listModels,
+                response -> response.getModelCollection().getItems());
     }
 
     /**
@@ -401,44 +212,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListProjectsResponse> listProjectsResponseIterator(
             final ListProjectsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListProjectsRequest.Builder, ListProjectsRequest, ListProjectsResponse>(
-                new java.util.function.Supplier<ListProjectsRequest.Builder>() {
-                    @Override
-                    public ListProjectsRequest.Builder get() {
-                        return ListProjectsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListProjectsRequest.builder().copy(request),
+                ListProjectsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListProjectsResponse, String>() {
-                    @Override
-                    public String apply(ListProjectsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListProjectsRequest.Builder>,
-                        ListProjectsRequest>() {
-                    @Override
-                    public ListProjectsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListProjectsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListProjectsRequest, ListProjectsResponse>() {
-                    @Override
-                    public ListProjectsResponse apply(ListProjectsRequest request) {
-                        return client.listProjects(request);
-                    }
-                });
+                client::listProjects);
     }
 
     /**
@@ -453,56 +239,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.ProjectSummary> listProjectsRecordIterator(
             final ListProjectsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListProjectsRequest.Builder,
-                ListProjectsRequest,
-                ListProjectsResponse,
-                com.oracle.bmc.ailanguage.model.ProjectSummary>(
-                new java.util.function.Supplier<ListProjectsRequest.Builder>() {
-                    @Override
-                    public ListProjectsRequest.Builder get() {
-                        return ListProjectsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListProjectsRequest.builder().copy(request),
+                ListProjectsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListProjectsResponse, String>() {
-                    @Override
-                    public String apply(ListProjectsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListProjectsRequest.Builder>,
-                        ListProjectsRequest>() {
-                    @Override
-                    public ListProjectsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListProjectsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListProjectsRequest, ListProjectsResponse>() {
-                    @Override
-                    public ListProjectsResponse apply(ListProjectsRequest request) {
-                        return client.listProjects(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListProjectsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.ProjectSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.ProjectSummary> apply(
-                            ListProjectsResponse response) {
-                        return response.getProjectCollection().getItems();
-                    }
-                });
+                client::listProjects,
+                response -> response.getProjectCollection().getItems());
     }
 
     /**
@@ -516,48 +266,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListWorkRequestErrorsResponse> listWorkRequestErrorsResponseIterator(
             final ListWorkRequestErrorsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestErrorsRequest.Builder,
-                ListWorkRequestErrorsRequest,
-                ListWorkRequestErrorsResponse>(
-                new java.util.function.Supplier<ListWorkRequestErrorsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest.Builder get() {
-                        return ListWorkRequestErrorsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestErrorsRequest.builder().copy(request),
+                ListWorkRequestErrorsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestErrorsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestErrorsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestErrorsRequest.Builder>,
-                        ListWorkRequestErrorsRequest>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestErrorsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsRequest, ListWorkRequestErrorsResponse>() {
-                    @Override
-                    public ListWorkRequestErrorsResponse apply(
-                            ListWorkRequestErrorsRequest request) {
-                        return client.listWorkRequestErrors(request);
-                    }
-                });
+                client::listWorkRequestErrors);
     }
 
     /**
@@ -573,58 +294,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.WorkRequestError>
             listWorkRequestErrorsRecordIterator(final ListWorkRequestErrorsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestErrorsRequest.Builder,
-                ListWorkRequestErrorsRequest,
-                ListWorkRequestErrorsResponse,
-                com.oracle.bmc.ailanguage.model.WorkRequestError>(
-                new java.util.function.Supplier<ListWorkRequestErrorsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest.Builder get() {
-                        return ListWorkRequestErrorsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestErrorsRequest.builder().copy(request),
+                ListWorkRequestErrorsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestErrorsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestErrorsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestErrorsRequest.Builder>,
-                        ListWorkRequestErrorsRequest>() {
-                    @Override
-                    public ListWorkRequestErrorsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestErrorsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsRequest, ListWorkRequestErrorsResponse>() {
-                    @Override
-                    public ListWorkRequestErrorsResponse apply(
-                            ListWorkRequestErrorsRequest request) {
-                        return client.listWorkRequestErrors(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestErrorsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestError>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestError> apply(
-                            ListWorkRequestErrorsResponse response) {
-                        return response.getWorkRequestErrorCollection().getItems();
-                    }
-                });
+                client::listWorkRequestErrors,
+                response -> response.getWorkRequestErrorCollection().getItems());
     }
 
     /**
@@ -637,47 +320,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListWorkRequestLogsResponse> listWorkRequestLogsResponseIterator(
             final ListWorkRequestLogsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestLogsRequest.Builder,
-                ListWorkRequestLogsRequest,
-                ListWorkRequestLogsResponse>(
-                new java.util.function.Supplier<ListWorkRequestLogsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestLogsRequest.Builder get() {
-                        return ListWorkRequestLogsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestLogsRequest.builder().copy(request),
+                ListWorkRequestLogsResponse::getOpcNextPage,
+                input -> {
+                    if (!input.getNextPageToken().isPresent()) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestLogsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestLogsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestLogsRequest.Builder>,
-                        ListWorkRequestLogsRequest>() {
-                    @Override
-                    public ListWorkRequestLogsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestLogsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsRequest, ListWorkRequestLogsResponse>() {
-                    @Override
-                    public ListWorkRequestLogsResponse apply(ListWorkRequestLogsRequest request) {
-                        return client.listWorkRequestLogs(request);
-                    }
-                });
+                client::listWorkRequestLogs);
     }
 
     /**
@@ -692,57 +347,20 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.WorkRequestLog>
             listWorkRequestLogsRecordIterator(final ListWorkRequestLogsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestLogsRequest.Builder,
-                ListWorkRequestLogsRequest,
-                ListWorkRequestLogsResponse,
-                com.oracle.bmc.ailanguage.model.WorkRequestLog>(
-                new java.util.function.Supplier<ListWorkRequestLogsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestLogsRequest.Builder get() {
-                        return ListWorkRequestLogsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestLogsRequest.builder().copy(request),
+                ListWorkRequestLogsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestLogsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestLogsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestLogsRequest.Builder>,
-                        ListWorkRequestLogsRequest>() {
-                    @Override
-                    public ListWorkRequestLogsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestLogsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsRequest, ListWorkRequestLogsResponse>() {
-                    @Override
-                    public ListWorkRequestLogsResponse apply(ListWorkRequestLogsRequest request) {
-                        return client.listWorkRequestLogs(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestLogsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestLog>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestLog> apply(
-                            ListWorkRequestLogsResponse response) {
-                        return response.getWorkRequestLogCollection().getItems();
-                    }
-                });
+                client::listWorkRequestLogs,
+                response -> response.getWorkRequestLogCollection().getItems());
     }
 
     /**
@@ -755,45 +373,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<ListWorkRequestsResponse> listWorkRequestsResponseIterator(
             final ListWorkRequestsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListWorkRequestsRequest.Builder, ListWorkRequestsRequest, ListWorkRequestsResponse>(
-                new java.util.function.Supplier<ListWorkRequestsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestsRequest.Builder get() {
-                        return ListWorkRequestsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListWorkRequestsRequest.builder().copy(request),
+                ListWorkRequestsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestsRequest.Builder>,
-                        ListWorkRequestsRequest>() {
-                    @Override
-                    public ListWorkRequestsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsRequest, ListWorkRequestsResponse>() {
-                    @Override
-                    public ListWorkRequestsResponse apply(ListWorkRequestsRequest request) {
-                        return client.listWorkRequests(request);
-                    }
-                });
+                client::listWorkRequests);
     }
 
     /**
@@ -808,56 +400,19 @@ public class AIServiceLanguagePaginators {
      */
     public Iterable<com.oracle.bmc.ailanguage.model.WorkRequestSummary>
             listWorkRequestsRecordIterator(final ListWorkRequestsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListWorkRequestsRequest.Builder,
-                ListWorkRequestsRequest,
-                ListWorkRequestsResponse,
-                com.oracle.bmc.ailanguage.model.WorkRequestSummary>(
-                new java.util.function.Supplier<ListWorkRequestsRequest.Builder>() {
-                    @Override
-                    public ListWorkRequestsRequest.Builder get() {
-                        return ListWorkRequestsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListWorkRequestsRequest.builder().copy(request),
+                ListWorkRequestsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListWorkRequestsResponse, String>() {
-                    @Override
-                    public String apply(ListWorkRequestsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListWorkRequestsRequest.Builder>,
-                        ListWorkRequestsRequest>() {
-                    @Override
-                    public ListWorkRequestsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListWorkRequestsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsRequest, ListWorkRequestsResponse>() {
-                    @Override
-                    public ListWorkRequestsResponse apply(ListWorkRequestsRequest request) {
-                        return client.listWorkRequests(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListWorkRequestsResponse,
-                        java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.ailanguage.model.WorkRequestSummary> apply(
-                            ListWorkRequestsResponse response) {
-                        return response.getWorkRequestSummaryCollection().getItems();
-                    }
-                });
+                client::listWorkRequests,
+                response -> response.getWorkRequestSummaryCollection().getItems());
     }
 }
