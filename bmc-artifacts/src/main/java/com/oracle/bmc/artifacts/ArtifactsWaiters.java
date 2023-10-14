@@ -111,21 +111,9 @@ public class ArtifactsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetContainerImageRequest, GetContainerImageResponse>() {
-                            @Override
-                            public GetContainerImageResponse apply(
-                                    GetContainerImageRequest request) {
-                                return client.getContainerImage(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetContainerImageResponse>() {
-                            @Override
-                            public boolean test(GetContainerImageResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getContainerImage().getLifecycleState());
-                            }
-                        },
+                        client::getContainerImage,
+                        response -> targetStatesSet.contains(
+                                response.getContainerImage().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.artifacts.model.ContainerImage.LifecycleState
                                         .Deleted)),
@@ -225,22 +213,9 @@ public class ArtifactsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetContainerImageSignatureRequest,
-                                GetContainerImageSignatureResponse>() {
-                            @Override
-                            public GetContainerImageSignatureResponse apply(
-                                    GetContainerImageSignatureRequest request) {
-                                return client.getContainerImageSignature(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetContainerImageSignatureResponse>() {
-                            @Override
-                            public boolean test(GetContainerImageSignatureResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getContainerImageSignature().getLifecycleState());
-                            }
-                        },
+                        client::getContainerImageSignature,
+                        response -> targetStatesSet.contains(
+                                response.getContainerImageSignature().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.artifacts.model.ContainerImageSignature
                                         .LifecycleState.Deleted)),
@@ -339,21 +314,9 @@ public class ArtifactsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetContainerRepositoryRequest, GetContainerRepositoryResponse>() {
-                            @Override
-                            public GetContainerRepositoryResponse apply(
-                                    GetContainerRepositoryRequest request) {
-                                return client.getContainerRepository(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetContainerRepositoryResponse>() {
-                            @Override
-                            public boolean test(GetContainerRepositoryResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getContainerRepository().getLifecycleState());
-                            }
-                        },
+                        client::getContainerRepository,
+                        response -> targetStatesSet.contains(
+                                response.getContainerRepository().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.artifacts.model.ContainerRepository.LifecycleState
                                         .Deleted)),
@@ -446,21 +409,9 @@ public class ArtifactsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetGenericArtifactRequest, GetGenericArtifactResponse>() {
-                            @Override
-                            public GetGenericArtifactResponse apply(
-                                    GetGenericArtifactRequest request) {
-                                return client.getGenericArtifact(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetGenericArtifactResponse>() {
-                            @Override
-                            public boolean test(GetGenericArtifactResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getGenericArtifact().getLifecycleState());
-                            }
-                        },
+                        request1 -> client.getGenericArtifact(request1),
+                        response -> targetStatesSet.contains(
+                                response.getGenericArtifact().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.artifacts.model.GenericArtifact.LifecycleState
                                         .Deleted)),
@@ -548,20 +499,9 @@ public class ArtifactsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetRepositoryRequest, GetRepositoryResponse>() {
-                            @Override
-                            public GetRepositoryResponse apply(GetRepositoryRequest request) {
-                                return client.getRepository(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetRepositoryResponse>() {
-                            @Override
-                            public boolean test(GetRepositoryResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getRepository().getLifecycleState());
-                            }
-                        },
+                        client::getRepository,
+                        response -> targetStatesSet.contains(
+                                response.getRepository().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.artifacts.model.Repository.LifecycleState.Deleted)),
                 request);
