@@ -53,49 +53,19 @@ public class AutoScalingPaginators {
     public Iterable<ListAutoScalingConfigurationsResponse>
             listAutoScalingConfigurationsResponseIterator(
                     final ListAutoScalingConfigurationsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListAutoScalingConfigurationsRequest.Builder,
-                ListAutoScalingConfigurationsRequest,
-                ListAutoScalingConfigurationsResponse>(
-                new java.util.function.Supplier<ListAutoScalingConfigurationsRequest.Builder>() {
-                    @Override
-                    public ListAutoScalingConfigurationsRequest.Builder get() {
-                        return ListAutoScalingConfigurationsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListAutoScalingConfigurationsRequest.builder().copy(request),
+                ListAutoScalingConfigurationsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAutoScalingConfigurationsResponse, String>() {
-                    @Override
-                    public String apply(ListAutoScalingConfigurationsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAutoScalingConfigurationsRequest.Builder>,
-                        ListAutoScalingConfigurationsRequest>() {
-                    @Override
-                    public ListAutoScalingConfigurationsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAutoScalingConfigurationsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingConfigurationsRequest,
-                        ListAutoScalingConfigurationsResponse>() {
-                    @Override
-                    public ListAutoScalingConfigurationsResponse apply(
-                            ListAutoScalingConfigurationsRequest request) {
-                        return client.listAutoScalingConfigurations(request);
-                    }
-                });
+                client::listAutoScalingConfigurations);
     }
 
     /**
@@ -112,63 +82,20 @@ public class AutoScalingPaginators {
     public Iterable<com.oracle.bmc.autoscaling.model.AutoScalingConfigurationSummary>
             listAutoScalingConfigurationsRecordIterator(
                     final ListAutoScalingConfigurationsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListAutoScalingConfigurationsRequest.Builder,
-                ListAutoScalingConfigurationsRequest,
-                ListAutoScalingConfigurationsResponse,
-                com.oracle.bmc.autoscaling.model.AutoScalingConfigurationSummary>(
-                new java.util.function.Supplier<ListAutoScalingConfigurationsRequest.Builder>() {
-                    @Override
-                    public ListAutoScalingConfigurationsRequest.Builder get() {
-                        return ListAutoScalingConfigurationsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListAutoScalingConfigurationsRequest.builder().copy(request),
+                ListAutoScalingConfigurationsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAutoScalingConfigurationsResponse, String>() {
-                    @Override
-                    public String apply(ListAutoScalingConfigurationsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAutoScalingConfigurationsRequest.Builder>,
-                        ListAutoScalingConfigurationsRequest>() {
-                    @Override
-                    public ListAutoScalingConfigurationsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAutoScalingConfigurationsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingConfigurationsRequest,
-                        ListAutoScalingConfigurationsResponse>() {
-                    @Override
-                    public ListAutoScalingConfigurationsResponse apply(
-                            ListAutoScalingConfigurationsRequest request) {
-                        return client.listAutoScalingConfigurations(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingConfigurationsResponse,
-                        java.util.List<
-                                com.oracle.bmc.autoscaling.model
-                                        .AutoScalingConfigurationSummary>>() {
-                    @Override
-                    public java.util.List<
-                                    com.oracle.bmc.autoscaling.model
-                                            .AutoScalingConfigurationSummary>
-                            apply(ListAutoScalingConfigurationsResponse response) {
-                        return response.getItems();
-                    }
-                });
+                client::listAutoScalingConfigurations,
+                ListAutoScalingConfigurationsResponse::getItems);
     }
 
     /**
@@ -182,48 +109,19 @@ public class AutoScalingPaginators {
      */
     public Iterable<ListAutoScalingPoliciesResponse> listAutoScalingPoliciesResponseIterator(
             final ListAutoScalingPoliciesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListAutoScalingPoliciesRequest.Builder,
-                ListAutoScalingPoliciesRequest,
-                ListAutoScalingPoliciesResponse>(
-                new java.util.function.Supplier<ListAutoScalingPoliciesRequest.Builder>() {
-                    @Override
-                    public ListAutoScalingPoliciesRequest.Builder get() {
-                        return ListAutoScalingPoliciesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListAutoScalingPoliciesRequest.builder().copy(request),
+                ListAutoScalingPoliciesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAutoScalingPoliciesResponse, String>() {
-                    @Override
-                    public String apply(ListAutoScalingPoliciesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAutoScalingPoliciesRequest.Builder>,
-                        ListAutoScalingPoliciesRequest>() {
-                    @Override
-                    public ListAutoScalingPoliciesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAutoScalingPoliciesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingPoliciesRequest, ListAutoScalingPoliciesResponse>() {
-                    @Override
-                    public ListAutoScalingPoliciesResponse apply(
-                            ListAutoScalingPoliciesRequest request) {
-                        return client.listAutoScalingPolicies(request);
-                    }
-                });
+                client::listAutoScalingPolicies);
     }
 
     /**
@@ -239,58 +137,19 @@ public class AutoScalingPaginators {
      */
     public Iterable<com.oracle.bmc.autoscaling.model.AutoScalingPolicySummary>
             listAutoScalingPoliciesRecordIterator(final ListAutoScalingPoliciesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListAutoScalingPoliciesRequest.Builder,
-                ListAutoScalingPoliciesRequest,
-                ListAutoScalingPoliciesResponse,
-                com.oracle.bmc.autoscaling.model.AutoScalingPolicySummary>(
-                new java.util.function.Supplier<ListAutoScalingPoliciesRequest.Builder>() {
-                    @Override
-                    public ListAutoScalingPoliciesRequest.Builder get() {
-                        return ListAutoScalingPoliciesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListAutoScalingPoliciesRequest.builder().copy(request),
+                ListAutoScalingPoliciesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAutoScalingPoliciesResponse, String>() {
-                    @Override
-                    public String apply(ListAutoScalingPoliciesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAutoScalingPoliciesRequest.Builder>,
-                        ListAutoScalingPoliciesRequest>() {
-                    @Override
-                    public ListAutoScalingPoliciesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAutoScalingPoliciesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingPoliciesRequest, ListAutoScalingPoliciesResponse>() {
-                    @Override
-                    public ListAutoScalingPoliciesResponse apply(
-                            ListAutoScalingPoliciesRequest request) {
-                        return client.listAutoScalingPolicies(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListAutoScalingPoliciesResponse,
-                        java.util.List<
-                                com.oracle.bmc.autoscaling.model.AutoScalingPolicySummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.autoscaling.model.AutoScalingPolicySummary>
-                            apply(ListAutoScalingPoliciesResponse response) {
-                        return response.getItems();
-                    }
-                });
+                client::listAutoScalingPolicies,
+                ListAutoScalingPoliciesResponse::getItems);
     }
 }
