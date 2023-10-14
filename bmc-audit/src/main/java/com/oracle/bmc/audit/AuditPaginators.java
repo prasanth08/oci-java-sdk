@@ -51,44 +51,19 @@ public class AuditPaginators {
      */
     public Iterable<ListEventsResponse> listEventsResponseIterator(
             final ListEventsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListEventsRequest.Builder, ListEventsRequest, ListEventsResponse>(
-                new java.util.function.Supplier<ListEventsRequest.Builder>() {
-                    @Override
-                    public ListEventsRequest.Builder get() {
-                        return ListEventsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListEventsRequest.builder().copy(request),
+                ListEventsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEventsResponse, String>() {
-                    @Override
-                    public String apply(ListEventsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEventsRequest.Builder>,
-                        ListEventsRequest>() {
-                    @Override
-                    public ListEventsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEventsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListEventsRequest, ListEventsResponse>() {
-                    @Override
-                    public ListEventsResponse apply(ListEventsRequest request) {
-                        return client.listEvents(request);
-                    }
-                });
+                client::listEvents);
     }
 
     /**
@@ -103,55 +78,19 @@ public class AuditPaginators {
      */
     public Iterable<com.oracle.bmc.audit.model.AuditEvent> listEventsRecordIterator(
             final ListEventsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListEventsRequest.Builder,
-                ListEventsRequest,
-                ListEventsResponse,
-                com.oracle.bmc.audit.model.AuditEvent>(
-                new java.util.function.Supplier<ListEventsRequest.Builder>() {
-                    @Override
-                    public ListEventsRequest.Builder get() {
-                        return ListEventsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListEventsRequest.builder().copy(request),
+                ListEventsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListEventsResponse, String>() {
-                    @Override
-                    public String apply(ListEventsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListEventsRequest.Builder>,
-                        ListEventsRequest>() {
-                    @Override
-                    public ListEventsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListEventsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListEventsRequest, ListEventsResponse>() {
-                    @Override
-                    public ListEventsResponse apply(ListEventsRequest request) {
-                        return client.listEvents(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListEventsResponse,
-                        java.util.List<com.oracle.bmc.audit.model.AuditEvent>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.audit.model.AuditEvent> apply(
-                            ListEventsResponse response) {
-                        return response.getItems();
-                    }
-                });
+                client::listEvents,
+                ListEventsResponse::getItems);
     }
 }
