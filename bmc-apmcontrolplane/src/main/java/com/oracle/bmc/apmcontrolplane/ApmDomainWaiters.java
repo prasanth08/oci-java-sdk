@@ -106,20 +106,9 @@ public class ApmDomainWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetApmDomainRequest, GetApmDomainResponse>() {
-                            @Override
-                            public GetApmDomainResponse apply(GetApmDomainRequest request) {
-                                return client.getApmDomain(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetApmDomainResponse>() {
-                            @Override
-                            public boolean test(GetApmDomainResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getApmDomain().getLifecycleState());
-                            }
-                        },
+                        client::getApmDomain,
+                        response -> targetStatesSet.contains(
+                                response.getApmDomain().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.apmcontrolplane.model.LifecycleStates.Deleted)),
                 request);
@@ -141,7 +130,7 @@ public class ApmDomainWaiters {
      *
      * @param request the request to send
      * @param terminationStrategy the {@link com.oracle.bmc.waiter.TerminationStrategy} to use
-     * @param delayStrategy the {@linkcom.oracle.bmc.waiter. DelayStrategy} to use
+     * @param delayStrategy the {@link com.oracle.bmc.waiter.DelayStrategy} to use
      * @return a new {@code com.oracle.bmc.waiter.Waiter} instance
      */
     public com.oracle.bmc.waiter.Waiter<GetWorkRequestRequest, GetWorkRequestResponse>
@@ -163,19 +152,10 @@ public class ApmDomainWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);
