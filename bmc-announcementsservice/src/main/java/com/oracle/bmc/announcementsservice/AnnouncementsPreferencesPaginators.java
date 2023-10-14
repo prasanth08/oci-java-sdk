@@ -53,49 +53,19 @@ public class AnnouncementsPreferencesPaginators {
     public Iterable<ListAnnouncementsPreferencesResponse>
             listAnnouncementsPreferencesResponseIterator(
                     final ListAnnouncementsPreferencesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListAnnouncementsPreferencesRequest.Builder,
-                ListAnnouncementsPreferencesRequest,
-                ListAnnouncementsPreferencesResponse>(
-                new java.util.function.Supplier<ListAnnouncementsPreferencesRequest.Builder>() {
-                    @Override
-                    public ListAnnouncementsPreferencesRequest.Builder get() {
-                        return ListAnnouncementsPreferencesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListAnnouncementsPreferencesRequest.builder().copy(request),
+                ListAnnouncementsPreferencesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAnnouncementsPreferencesResponse, String>() {
-                    @Override
-                    public String apply(ListAnnouncementsPreferencesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAnnouncementsPreferencesRequest.Builder>,
-                        ListAnnouncementsPreferencesRequest>() {
-                    @Override
-                    public ListAnnouncementsPreferencesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAnnouncementsPreferencesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementsPreferencesRequest,
-                        ListAnnouncementsPreferencesResponse>() {
-                    @Override
-                    public ListAnnouncementsPreferencesResponse apply(
-                            ListAnnouncementsPreferencesRequest request) {
-                        return client.listAnnouncementsPreferences(request);
-                    }
-                });
+                client::listAnnouncementsPreferences);
     }
 
     /**
@@ -112,62 +82,19 @@ public class AnnouncementsPreferencesPaginators {
     public Iterable<com.oracle.bmc.announcementsservice.model.AnnouncementsPreferencesSummary>
             listAnnouncementsPreferencesRecordIterator(
                     final ListAnnouncementsPreferencesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListAnnouncementsPreferencesRequest.Builder,
-                ListAnnouncementsPreferencesRequest,
-                ListAnnouncementsPreferencesResponse,
-                com.oracle.bmc.announcementsservice.model.AnnouncementsPreferencesSummary>(
-                new java.util.function.Supplier<ListAnnouncementsPreferencesRequest.Builder>() {
-                    @Override
-                    public ListAnnouncementsPreferencesRequest.Builder get() {
-                        return ListAnnouncementsPreferencesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListAnnouncementsPreferencesRequest.builder().copy(request),
+                ListAnnouncementsPreferencesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAnnouncementsPreferencesResponse, String>() {
-                    @Override
-                    public String apply(ListAnnouncementsPreferencesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAnnouncementsPreferencesRequest.Builder>,
-                        ListAnnouncementsPreferencesRequest>() {
-                    @Override
-                    public ListAnnouncementsPreferencesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAnnouncementsPreferencesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementsPreferencesRequest,
-                        ListAnnouncementsPreferencesResponse>() {
-                    @Override
-                    public ListAnnouncementsPreferencesResponse apply(
-                            ListAnnouncementsPreferencesRequest request) {
-                        return client.listAnnouncementsPreferences(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementsPreferencesResponse,
-                        java.util.List<
-                                com.oracle.bmc.announcementsservice.model
-                                        .AnnouncementsPreferencesSummary>>() {
-                    @Override
-                    public java.util.List<
-                                    com.oracle.bmc.announcementsservice.model
-                                            .AnnouncementsPreferencesSummary>
-                            apply(ListAnnouncementsPreferencesResponse response) {
-                        return response.getItems();
-                    }
-                });
+                client::listAnnouncementsPreferences,
+                ListAnnouncementsPreferencesResponse::getItems);
     }
 }

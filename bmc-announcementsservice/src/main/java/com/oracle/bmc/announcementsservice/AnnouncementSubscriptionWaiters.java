@@ -127,22 +127,9 @@ public class AnnouncementSubscriptionWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetAnnouncementSubscriptionRequest,
-                                GetAnnouncementSubscriptionResponse>() {
-                            @Override
-                            public GetAnnouncementSubscriptionResponse apply(
-                                    GetAnnouncementSubscriptionRequest request) {
-                                return client.getAnnouncementSubscription(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetAnnouncementSubscriptionResponse>() {
-                            @Override
-                            public boolean test(GetAnnouncementSubscriptionResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getAnnouncementSubscription().getLifecycleState());
-                            }
-                        },
+                        client::getAnnouncementSubscription,
+                        response -> targetStatesSet.contains(
+                                response.getAnnouncementSubscription().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.announcementsservice.model.AnnouncementSubscription
                                         .LifecycleState.Deleted)),

@@ -53,49 +53,19 @@ public class AnnouncementSubscriptionPaginators {
     public Iterable<ListAnnouncementSubscriptionsResponse>
             listAnnouncementSubscriptionsResponseIterator(
                     final ListAnnouncementSubscriptionsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListAnnouncementSubscriptionsRequest.Builder,
-                ListAnnouncementSubscriptionsRequest,
-                ListAnnouncementSubscriptionsResponse>(
-                new java.util.function.Supplier<ListAnnouncementSubscriptionsRequest.Builder>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsRequest.Builder get() {
-                        return ListAnnouncementSubscriptionsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListAnnouncementSubscriptionsRequest.builder().copy(request),
+                ListAnnouncementSubscriptionsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAnnouncementSubscriptionsResponse, String>() {
-                    @Override
-                    public String apply(ListAnnouncementSubscriptionsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAnnouncementSubscriptionsRequest.Builder>,
-                        ListAnnouncementSubscriptionsRequest>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAnnouncementSubscriptionsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementSubscriptionsRequest,
-                        ListAnnouncementSubscriptionsResponse>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsResponse apply(
-                            ListAnnouncementSubscriptionsRequest request) {
-                        return client.listAnnouncementSubscriptions(request);
-                    }
-                });
+                client::listAnnouncementSubscriptions);
     }
 
     /**
@@ -112,62 +82,19 @@ public class AnnouncementSubscriptionPaginators {
     public Iterable<com.oracle.bmc.announcementsservice.model.AnnouncementSubscriptionSummary>
             listAnnouncementSubscriptionsRecordIterator(
                     final ListAnnouncementSubscriptionsRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListAnnouncementSubscriptionsRequest.Builder,
-                ListAnnouncementSubscriptionsRequest,
-                ListAnnouncementSubscriptionsResponse,
-                com.oracle.bmc.announcementsservice.model.AnnouncementSubscriptionSummary>(
-                new java.util.function.Supplier<ListAnnouncementSubscriptionsRequest.Builder>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsRequest.Builder get() {
-                        return ListAnnouncementSubscriptionsRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListAnnouncementSubscriptionsRequest.builder().copy(request),
+                ListAnnouncementSubscriptionsResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListAnnouncementSubscriptionsResponse, String>() {
-                    @Override
-                    public String apply(ListAnnouncementSubscriptionsResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListAnnouncementSubscriptionsRequest.Builder>,
-                        ListAnnouncementSubscriptionsRequest>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListAnnouncementSubscriptionsRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementSubscriptionsRequest,
-                        ListAnnouncementSubscriptionsResponse>() {
-                    @Override
-                    public ListAnnouncementSubscriptionsResponse apply(
-                            ListAnnouncementSubscriptionsRequest request) {
-                        return client.listAnnouncementSubscriptions(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListAnnouncementSubscriptionsResponse,
-                        java.util.List<
-                                com.oracle.bmc.announcementsservice.model
-                                        .AnnouncementSubscriptionSummary>>() {
-                    @Override
-                    public java.util.List<
-                                    com.oracle.bmc.announcementsservice.model
-                                            .AnnouncementSubscriptionSummary>
-                            apply(ListAnnouncementSubscriptionsResponse response) {
-                        return response.getAnnouncementSubscriptionCollection().getItems();
-                    }
-                });
+                client::listAnnouncementSubscriptions,
+                response -> response.getAnnouncementSubscriptionCollection().getItems());
     }
 }
