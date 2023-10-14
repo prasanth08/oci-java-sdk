@@ -51,44 +51,19 @@ public class QueryPaginators {
      */
     public Iterable<ListQuickPicksResponse> listQuickPicksResponseIterator(
             final ListQuickPicksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListQuickPicksRequest.Builder, ListQuickPicksRequest, ListQuickPicksResponse>(
-                new java.util.function.Supplier<ListQuickPicksRequest.Builder>() {
-                    @Override
-                    public ListQuickPicksRequest.Builder get() {
-                        return ListQuickPicksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListQuickPicksRequest.builder().copy(request),
+                ListQuickPicksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListQuickPicksResponse, String>() {
-                    @Override
-                    public String apply(ListQuickPicksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListQuickPicksRequest.Builder>,
-                        ListQuickPicksRequest>() {
-                    @Override
-                    public ListQuickPicksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListQuickPicksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListQuickPicksRequest, ListQuickPicksResponse>() {
-                    @Override
-                    public ListQuickPicksResponse apply(ListQuickPicksRequest request) {
-                        return client.listQuickPicks(request);
-                    }
-                });
+                client::listQuickPicks);
     }
 
     /**
@@ -103,55 +78,19 @@ public class QueryPaginators {
      */
     public Iterable<com.oracle.bmc.apmtraces.model.QuickPickSummary> listQuickPicksRecordIterator(
             final ListQuickPicksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListQuickPicksRequest.Builder,
-                ListQuickPicksRequest,
-                ListQuickPicksResponse,
-                com.oracle.bmc.apmtraces.model.QuickPickSummary>(
-                new java.util.function.Supplier<ListQuickPicksRequest.Builder>() {
-                    @Override
-                    public ListQuickPicksRequest.Builder get() {
-                        return ListQuickPicksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListQuickPicksRequest.builder().copy(request),
+                ListQuickPicksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListQuickPicksResponse, String>() {
-                    @Override
-                    public String apply(ListQuickPicksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListQuickPicksRequest.Builder>,
-                        ListQuickPicksRequest>() {
-                    @Override
-                    public ListQuickPicksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListQuickPicksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListQuickPicksRequest, ListQuickPicksResponse>() {
-                    @Override
-                    public ListQuickPicksResponse apply(ListQuickPicksRequest request) {
-                        return client.listQuickPicks(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListQuickPicksResponse,
-                        java.util.List<com.oracle.bmc.apmtraces.model.QuickPickSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apmtraces.model.QuickPickSummary> apply(
-                            ListQuickPicksResponse response) {
-                        return response.getItems();
-                    }
-                });
+                client::listQuickPicks,
+                ListQuickPicksResponse::getItems);
     }
 }
