@@ -107,20 +107,9 @@ public class ApplicationMigrationWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetMigrationRequest, GetMigrationResponse>() {
-                            @Override
-                            public GetMigrationResponse apply(GetMigrationRequest request) {
-                                return client.getMigration(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetMigrationResponse>() {
-                            @Override
-                            public boolean test(GetMigrationResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getMigration().getLifecycleState());
-                            }
-                        },
+                        client::getMigration,
+                        response -> targetStatesSet.contains(
+                                response.getMigration().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.applicationmigration.model.MigrationLifecycleStates
                                         .Deleted)),
@@ -208,19 +197,9 @@ public class ApplicationMigrationWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetSourceRequest, GetSourceResponse>() {
-                            @Override
-                            public GetSourceResponse apply(GetSourceRequest request) {
-                                return client.getSource(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetSourceResponse>() {
-                            @Override
-                            public boolean test(GetSourceResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getSource().getLifecycleState());
-                            }
-                        },
+                        client::getSource,
+                        response -> targetStatesSet.contains(
+                                response.getSource().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.applicationmigration.model.SourceLifecycleStates
                                         .Deleted)),
@@ -265,19 +244,10 @@ public class ApplicationMigrationWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);
