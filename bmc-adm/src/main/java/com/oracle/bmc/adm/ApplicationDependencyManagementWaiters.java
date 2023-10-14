@@ -111,20 +111,9 @@ public class ApplicationDependencyManagementWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetKnowledgeBaseRequest, GetKnowledgeBaseResponse>() {
-                            @Override
-                            public GetKnowledgeBaseResponse apply(GetKnowledgeBaseRequest request) {
-                                return client.getKnowledgeBase(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetKnowledgeBaseResponse>() {
-                            @Override
-                            public boolean test(GetKnowledgeBaseResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getKnowledgeBase().getLifecycleState());
-                            }
-                        },
+                        client::getKnowledgeBase,
+                        response -> targetStatesSet.contains(
+                                response.getKnowledgeBase().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.adm.model.KnowledgeBase.LifecycleState.Deleted)),
                 request);
@@ -217,21 +206,9 @@ public class ApplicationDependencyManagementWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetVulnerabilityAuditRequest, GetVulnerabilityAuditResponse>() {
-                            @Override
-                            public GetVulnerabilityAuditResponse apply(
-                                    GetVulnerabilityAuditRequest request) {
-                                return client.getVulnerabilityAudit(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetVulnerabilityAuditResponse>() {
-                            @Override
-                            public boolean test(GetVulnerabilityAuditResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getVulnerabilityAudit().getLifecycleState());
-                            }
-                        },
+                        client::getVulnerabilityAudit,
+                        response -> targetStatesSet.contains(
+                                response.getVulnerabilityAudit().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.adm.model.VulnerabilityAudit.LifecycleState
                                         .Deleted)),
@@ -276,19 +253,10 @@ public class ApplicationDependencyManagementWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);
