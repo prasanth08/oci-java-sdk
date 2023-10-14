@@ -52,48 +52,19 @@ public class AccessGovernanceCPPaginators {
      */
     public Iterable<ListGovernanceInstancesResponse> listGovernanceInstancesResponseIterator(
             final ListGovernanceInstancesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListGovernanceInstancesRequest.Builder,
-                ListGovernanceInstancesRequest,
-                ListGovernanceInstancesResponse>(
-                new java.util.function.Supplier<ListGovernanceInstancesRequest.Builder>() {
-                    @Override
-                    public ListGovernanceInstancesRequest.Builder get() {
-                        return ListGovernanceInstancesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListGovernanceInstancesRequest.builder().copy(request),
+                ListGovernanceInstancesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListGovernanceInstancesResponse, String>() {
-                    @Override
-                    public String apply(ListGovernanceInstancesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListGovernanceInstancesRequest.Builder>,
-                        ListGovernanceInstancesRequest>() {
-                    @Override
-                    public ListGovernanceInstancesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListGovernanceInstancesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListGovernanceInstancesRequest, ListGovernanceInstancesResponse>() {
-                    @Override
-                    public ListGovernanceInstancesResponse apply(
-                            ListGovernanceInstancesRequest request) {
-                        return client.listGovernanceInstances(request);
-                    }
-                });
+                client::listGovernanceInstances);
     }
 
     /**
@@ -109,61 +80,19 @@ public class AccessGovernanceCPPaginators {
      */
     public Iterable<com.oracle.bmc.accessgovernancecp.model.GovernanceInstanceSummary>
             listGovernanceInstancesRecordIterator(final ListGovernanceInstancesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListGovernanceInstancesRequest.Builder,
-                ListGovernanceInstancesRequest,
-                ListGovernanceInstancesResponse,
-                com.oracle.bmc.accessgovernancecp.model.GovernanceInstanceSummary>(
-                new java.util.function.Supplier<ListGovernanceInstancesRequest.Builder>() {
-                    @Override
-                    public ListGovernanceInstancesRequest.Builder get() {
-                        return ListGovernanceInstancesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListGovernanceInstancesRequest.builder().copy(request),
+                response -> response.getOpcNextPage(),
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListGovernanceInstancesResponse, String>() {
-                    @Override
-                    public String apply(ListGovernanceInstancesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListGovernanceInstancesRequest.Builder>,
-                        ListGovernanceInstancesRequest>() {
-                    @Override
-                    public ListGovernanceInstancesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListGovernanceInstancesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListGovernanceInstancesRequest, ListGovernanceInstancesResponse>() {
-                    @Override
-                    public ListGovernanceInstancesResponse apply(
-                            ListGovernanceInstancesRequest request) {
-                        return client.listGovernanceInstances(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListGovernanceInstancesResponse,
-                        java.util.List<
-                                com.oracle.bmc.accessgovernancecp.model
-                                        .GovernanceInstanceSummary>>() {
-                    @Override
-                    public java.util.List<
-                                    com.oracle.bmc.accessgovernancecp.model
-                                            .GovernanceInstanceSummary>
-                            apply(ListGovernanceInstancesResponse response) {
-                        return response.getGovernanceInstanceCollection().getItems();
-                    }
-                });
+                client::listGovernanceInstances,
+                response -> response.getGovernanceInstanceCollection().getItems());
     }
 }

@@ -114,21 +114,9 @@ public class AccessGovernanceCPWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetGovernanceInstanceRequest, GetGovernanceInstanceResponse>() {
-                            @Override
-                            public GetGovernanceInstanceResponse apply(
-                                    GetGovernanceInstanceRequest request) {
-                                return client.getGovernanceInstance(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetGovernanceInstanceResponse>() {
-                            @Override
-                            public boolean test(GetGovernanceInstanceResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getGovernanceInstance().getLifecycleState());
-                            }
-                        },
+                        client::getGovernanceInstance,
+                        response -> targetStatesSet.contains(
+                                response.getGovernanceInstance().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.accessgovernancecp.model.InstanceLifecycleState
                                         .Deleted)),
