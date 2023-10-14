@@ -105,19 +105,9 @@ public class ApiGatewayWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetApiRequest, GetApiResponse>() {
-                            @Override
-                            public GetApiResponse apply(GetApiRequest request) {
-                                return client.getApi(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetApiResponse>() {
-                            @Override
-                            public boolean test(GetApiResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getApi().getLifecycleState());
-                            }
-                        },
+                        client::getApi,
+                        response -> targetStatesSet.contains(
+                                response.getApi().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.apigateway.model.Api.LifecycleState.Deleted)),
                 request);
@@ -209,20 +199,9 @@ public class ApiGatewayWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetCertificateRequest, GetCertificateResponse>() {
-                            @Override
-                            public GetCertificateResponse apply(GetCertificateRequest request) {
-                                return client.getCertificate(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetCertificateResponse>() {
-                            @Override
-                            public boolean test(GetCertificateResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getCertificate().getLifecycleState());
-                            }
-                        },
+                        client::getCertificate,
+                        response -> targetStatesSet.contains(
+                                response.getCertificate().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.apigateway.model.Certificate.LifecycleState
                                         .Deleted)),
@@ -309,19 +288,9 @@ public class ApiGatewayWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<GetSdkRequest, GetSdkResponse>() {
-                            @Override
-                            public GetSdkResponse apply(GetSdkRequest request) {
-                                return client.getSdk(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetSdkResponse>() {
-                            @Override
-                            public boolean test(GetSdkResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getSdk().getLifecycleState());
-                            }
-                        },
+                        client::getSdk,
+                        response -> targetStatesSet.contains(
+                                response.getSdk().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.apigateway.model.Sdk.LifecycleState.Deleted)),
                 request);

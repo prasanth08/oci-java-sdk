@@ -50,44 +50,19 @@ public class ApiGatewayPaginators {
      *     received from the service.
      */
     public Iterable<ListApisResponse> listApisResponseIterator(final ListApisRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListApisRequest.Builder, ListApisRequest, ListApisResponse>(
-                new java.util.function.Supplier<ListApisRequest.Builder>() {
-                    @Override
-                    public ListApisRequest.Builder get() {
-                        return ListApisRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListApisRequest.builder().copy(request),
+                ListApisResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListApisResponse, String>() {
-                    @Override
-                    public String apply(ListApisResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListApisRequest.Builder>,
-                        ListApisRequest>() {
-                    @Override
-                    public ListApisRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListApisRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListApisRequest, ListApisResponse>() {
-                    @Override
-                    public ListApisResponse apply(ListApisRequest request) {
-                        return client.listApis(request);
-                    }
-                });
+                client::listApis);
     }
 
     /**
@@ -102,56 +77,20 @@ public class ApiGatewayPaginators {
      */
     public Iterable<com.oracle.bmc.apigateway.model.ApiSummary> listApisRecordIterator(
             final ListApisRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListApisRequest.Builder,
-                ListApisRequest,
-                ListApisResponse,
-                com.oracle.bmc.apigateway.model.ApiSummary>(
-                new java.util.function.Supplier<ListApisRequest.Builder>() {
-                    @Override
-                    public ListApisRequest.Builder get() {
-                        return ListApisRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListApisRequest.builder().copy(request),
+                ListApisResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListApisResponse, String>() {
-                    @Override
-                    public String apply(ListApisResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListApisRequest.Builder>,
-                        ListApisRequest>() {
-                    @Override
-                    public ListApisRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListApisRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListApisRequest, ListApisResponse>() {
-                    @Override
-                    public ListApisResponse apply(ListApisRequest request) {
-                        return client.listApis(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListApisResponse,
-                        java.util.List<com.oracle.bmc.apigateway.model.ApiSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apigateway.model.ApiSummary> apply(
-                            ListApisResponse response) {
-                        return response.getApiCollection().getItems();
-                    }
-                });
+                client::listApis,
+                response -> response.getApiCollection().getItems());
     }
 
     /**
@@ -164,45 +103,19 @@ public class ApiGatewayPaginators {
      */
     public Iterable<ListCertificatesResponse> listCertificatesResponseIterator(
             final ListCertificatesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListCertificatesRequest.Builder, ListCertificatesRequest, ListCertificatesResponse>(
-                new java.util.function.Supplier<ListCertificatesRequest.Builder>() {
-                    @Override
-                    public ListCertificatesRequest.Builder get() {
-                        return ListCertificatesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListCertificatesRequest.builder().copy(request),
+                ListCertificatesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListCertificatesResponse, String>() {
-                    @Override
-                    public String apply(ListCertificatesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListCertificatesRequest.Builder>,
-                        ListCertificatesRequest>() {
-                    @Override
-                    public ListCertificatesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListCertificatesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListCertificatesRequest, ListCertificatesResponse>() {
-                    @Override
-                    public ListCertificatesResponse apply(ListCertificatesRequest request) {
-                        return client.listCertificates(request);
-                    }
-                });
+                client::listCertificates);
     }
 
     /**
@@ -217,57 +130,20 @@ public class ApiGatewayPaginators {
      */
     public Iterable<com.oracle.bmc.apigateway.model.CertificateSummary>
             listCertificatesRecordIterator(final ListCertificatesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListCertificatesRequest.Builder,
-                ListCertificatesRequest,
-                ListCertificatesResponse,
-                com.oracle.bmc.apigateway.model.CertificateSummary>(
-                new java.util.function.Supplier<ListCertificatesRequest.Builder>() {
-                    @Override
-                    public ListCertificatesRequest.Builder get() {
-                        return ListCertificatesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListCertificatesRequest.builder().copy(request),
+                ListCertificatesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListCertificatesResponse, String>() {
-                    @Override
-                    public String apply(ListCertificatesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListCertificatesRequest.Builder>,
-                        ListCertificatesRequest>() {
-                    @Override
-                    public ListCertificatesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListCertificatesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListCertificatesRequest, ListCertificatesResponse>() {
-                    @Override
-                    public ListCertificatesResponse apply(ListCertificatesRequest request) {
-                        return client.listCertificates(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListCertificatesResponse,
-                        java.util.List<com.oracle.bmc.apigateway.model.CertificateSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apigateway.model.CertificateSummary> apply(
-                            ListCertificatesResponse response) {
-                        return response.getCertificateCollection().getItems();
-                    }
-                });
+                client::listCertificates,
+                response -> response.getCertificateCollection().getItems());
     }
 
     /**
@@ -280,47 +156,19 @@ public class ApiGatewayPaginators {
      */
     public Iterable<ListSdkLanguageTypesResponse> listSdkLanguageTypesResponseIterator(
             final ListSdkLanguageTypesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListSdkLanguageTypesRequest.Builder,
-                ListSdkLanguageTypesRequest,
-                ListSdkLanguageTypesResponse>(
-                new java.util.function.Supplier<ListSdkLanguageTypesRequest.Builder>() {
-                    @Override
-                    public ListSdkLanguageTypesRequest.Builder get() {
-                        return ListSdkLanguageTypesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListSdkLanguageTypesRequest.builder().copy(request),
+                ListSdkLanguageTypesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListSdkLanguageTypesResponse, String>() {
-                    @Override
-                    public String apply(ListSdkLanguageTypesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListSdkLanguageTypesRequest.Builder>,
-                        ListSdkLanguageTypesRequest>() {
-                    @Override
-                    public ListSdkLanguageTypesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListSdkLanguageTypesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListSdkLanguageTypesRequest, ListSdkLanguageTypesResponse>() {
-                    @Override
-                    public ListSdkLanguageTypesResponse apply(ListSdkLanguageTypesRequest request) {
-                        return client.listSdkLanguageTypes(request);
-                    }
-                });
+                client::listSdkLanguageTypes);
     }
 
     /**
@@ -336,57 +184,20 @@ public class ApiGatewayPaginators {
      */
     public Iterable<com.oracle.bmc.apigateway.model.SdkLanguageTypeSummary>
             listSdkLanguageTypesRecordIterator(final ListSdkLanguageTypesRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListSdkLanguageTypesRequest.Builder,
-                ListSdkLanguageTypesRequest,
-                ListSdkLanguageTypesResponse,
-                com.oracle.bmc.apigateway.model.SdkLanguageTypeSummary>(
-                new java.util.function.Supplier<ListSdkLanguageTypesRequest.Builder>() {
-                    @Override
-                    public ListSdkLanguageTypesRequest.Builder get() {
-                        return ListSdkLanguageTypesRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListSdkLanguageTypesRequest.builder().copy(request),
+                ListSdkLanguageTypesResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListSdkLanguageTypesResponse, String>() {
-                    @Override
-                    public String apply(ListSdkLanguageTypesResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListSdkLanguageTypesRequest.Builder>,
-                        ListSdkLanguageTypesRequest>() {
-                    @Override
-                    public ListSdkLanguageTypesRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListSdkLanguageTypesRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<
-                        ListSdkLanguageTypesRequest, ListSdkLanguageTypesResponse>() {
-                    @Override
-                    public ListSdkLanguageTypesResponse apply(ListSdkLanguageTypesRequest request) {
-                        return client.listSdkLanguageTypes(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListSdkLanguageTypesResponse,
-                        java.util.List<com.oracle.bmc.apigateway.model.SdkLanguageTypeSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apigateway.model.SdkLanguageTypeSummary>
-                            apply(ListSdkLanguageTypesResponse response) {
-                        return response.getSdkLanguageTypeCollection().getItems();
-                    }
-                });
+                client::listSdkLanguageTypes,
+                response -> response.getSdkLanguageTypeCollection().getItems());
     }
 
     /**
@@ -398,44 +209,19 @@ public class ApiGatewayPaginators {
      *     received from the service.
      */
     public Iterable<ListSdksResponse> listSdksResponseIterator(final ListSdksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseIterable<
-                ListSdksRequest.Builder, ListSdksRequest, ListSdksResponse>(
-                new java.util.function.Supplier<ListSdksRequest.Builder>() {
-                    @Override
-                    public ListSdksRequest.Builder get() {
-                        return ListSdksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseIterable<>(
+                () -> ListSdksRequest.builder().copy(request),
+                ListSdksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListSdksResponse, String>() {
-                    @Override
-                    public String apply(ListSdksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListSdksRequest.Builder>,
-                        ListSdksRequest>() {
-                    @Override
-                    public ListSdksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListSdksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListSdksRequest, ListSdksResponse>() {
-                    @Override
-                    public ListSdksResponse apply(ListSdksRequest request) {
-                        return client.listSdks(request);
-                    }
-                });
+                client::listSdks);
     }
 
     /**
@@ -450,55 +236,19 @@ public class ApiGatewayPaginators {
      */
     public Iterable<com.oracle.bmc.apigateway.model.SdkSummary> listSdksRecordIterator(
             final ListSdksRequest request) {
-        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<
-                ListSdksRequest.Builder,
-                ListSdksRequest,
-                ListSdksResponse,
-                com.oracle.bmc.apigateway.model.SdkSummary>(
-                new java.util.function.Supplier<ListSdksRequest.Builder>() {
-                    @Override
-                    public ListSdksRequest.Builder get() {
-                        return ListSdksRequest.builder().copy(request);
+        return new com.oracle.bmc.paginator.internal.ResponseRecordIterable<>(
+                () -> ListSdksRequest.builder().copy(request),
+                ListSdksResponse::getOpcNextPage,
+                input -> {
+                    if (input.getNextPageToken() == null) {
+                        return input.getRequestBuilder().build();
+                    } else {
+                        return input.getRequestBuilder()
+                                .page(input.getNextPageToken().orElse(null))
+                                .build();
                     }
                 },
-                new java.util.function.Function<ListSdksResponse, String>() {
-                    @Override
-                    public String apply(ListSdksResponse response) {
-                        return response.getOpcNextPage();
-                    }
-                },
-                new java.util.function.Function<
-                        com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                ListSdksRequest.Builder>,
-                        ListSdksRequest>() {
-                    @Override
-                    public ListSdksRequest apply(
-                            com.oracle.bmc.paginator.internal.RequestBuilderAndToken<
-                                            ListSdksRequest.Builder>
-                                    input) {
-                        if (input.getNextPageToken() == null) {
-                            return input.getRequestBuilder().build();
-                        } else {
-                            return input.getRequestBuilder()
-                                    .page(input.getNextPageToken().orElse(null))
-                                    .build();
-                        }
-                    }
-                },
-                new java.util.function.Function<ListSdksRequest, ListSdksResponse>() {
-                    @Override
-                    public ListSdksResponse apply(ListSdksRequest request) {
-                        return client.listSdks(request);
-                    }
-                },
-                new java.util.function.Function<
-                        ListSdksResponse,
-                        java.util.List<com.oracle.bmc.apigateway.model.SdkSummary>>() {
-                    @Override
-                    public java.util.List<com.oracle.bmc.apigateway.model.SdkSummary> apply(
-                            ListSdksResponse response) {
-                        return response.getSdkCollection().getItems();
-                    }
-                });
+                client::listSdks,
+                response -> response.getSdkCollection().getItems());
     }
 }
