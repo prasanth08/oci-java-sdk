@@ -113,21 +113,9 @@ public class AnalyticsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetAnalyticsInstanceRequest, GetAnalyticsInstanceResponse>() {
-                            @Override
-                            public GetAnalyticsInstanceResponse apply(
-                                    GetAnalyticsInstanceRequest request) {
-                                return client.getAnalyticsInstance(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetAnalyticsInstanceResponse>() {
-                            @Override
-                            public boolean test(GetAnalyticsInstanceResponse response) {
-                                return targetStatesSet.contains(
-                                        response.getAnalyticsInstance().getLifecycleState());
-                            }
-                        },
+                        client::getAnalyticsInstance,
+                        response -> targetStatesSet.contains(
+                                response.getAnalyticsInstance().getLifecycleState()),
                         targetStatesSet.contains(
                                 com.oracle.bmc.analytics.model.AnalyticsInstanceLifecycleState
                                         .Deleted)),
@@ -172,19 +160,10 @@ public class AnalyticsWaiters {
                 executorService,
                 waiter.toCallable(
                         () -> request,
-                        new java.util.function.Function<
-                                GetWorkRequestRequest, GetWorkRequestResponse>() {
-                            @Override
-                            public GetWorkRequestResponse apply(GetWorkRequestRequest request) {
-                                return client.getWorkRequest(request);
-                            }
-                        },
-                        new java.util.function.Predicate<GetWorkRequestResponse>() {
-                            @Override
-                            public boolean test(GetWorkRequestResponse response) {
-                                // work requests are complete once the time finished is available
-                                return response.getWorkRequest().getTimeFinished() != null;
-                            }
+                        client::getWorkRequest,
+                        response -> {
+                            // work requests are complete once the time finished is available
+                            return response.getWorkRequest().getTimeFinished() != null;
                         },
                         false),
                 request);
